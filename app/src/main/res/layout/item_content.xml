@@ -14,22 +14,42 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/background_dark" />
+            android:background="#C8CDD0" />
 
-        <TextView
-            android:id="@+id/tv_content"
+        <RelativeLayout
+            android:id="@+id/rlt_mark"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:paddingLeft="15dp"
-            android:text="グルメが充実" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="グルメが充実" />
+
+
+            <ImageView
+                android:id="@+id/imv_mark"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_mark_red"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="@android:color/background_dark" />
+        android:background="@android:color/background_dark"
+        android:visibility="gone" />
 
 </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
@@ -14,7 +15,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private EditText edt_email;
     private EditText edt_password;
     private RelativeLayout rlt_prefecture;
-
+    private ImageView imv_mark_man;
+    private ImageView imv_mark_woman;
+    private RelativeLayout rlt_woman;
+    private RelativeLayout rlt_man;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -40,6 +44,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         edt_email = view.findViewById(R.id.edt_email);
         edt_password = view.findViewById(R.id.edt_password);
         rlt_prefecture = view.findViewById(R.id.rlt_prefecture);
+        imv_mark_man = view.findViewById(R.id.imv_mark_man);
+        imv_mark_woman = view.findViewById(R.id.imv_mark_woman);
+        rlt_man = view.findViewById(R.id.rlt_man);
+        rlt_woman = view.findViewById(R.id.rlt_woman);
 
         edt_email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -64,6 +72,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         });
 
         rlt_prefecture.setOnClickListener(this);
+        rlt_man.setOnClickListener(this);
+        rlt_woman.setOnClickListener(this);
+
         return view;
     }
 
@@ -79,11 +90,29 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         super.onDetach();
     }
 
+
+    private void chooseGender(boolean isMan) {
+        if (isMan) {
+            imv_mark_man.setVisibility(View.VISIBLE);
+            imv_mark_woman.setVisibility(View.GONE);
+        } else {
+            imv_mark_man.setVisibility(View.GONE);
+            imv_mark_woman.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlt_prefecture:
                 ((MainActivity) getActivity()).openPage(new PrefectureFragment());
+                break;
+            case R.id.rlt_man:
+                chooseGender(true);
+                break;
+            case R.id.rlt_woman:
+                chooseGender(false);
+                break;
         }
     }
 }

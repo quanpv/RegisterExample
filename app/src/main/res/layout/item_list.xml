@@ -4,6 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C8CDD0" />
+
     <TextView
         android:id="@+id/tv_header"
         android:layout_width="match_parent"
@@ -11,7 +16,7 @@
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:text="おすすめの月"
-        android:background="@android:color/darker_gray"
+        android:background="#F4F6F8"
         android:textColor="@android:color/black"
         android:textSize="17sp" />
 
