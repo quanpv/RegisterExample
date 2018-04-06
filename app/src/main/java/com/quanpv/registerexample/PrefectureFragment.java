@@ -34,20 +34,20 @@ public class PrefectureFragment extends Fragment {
     }
 
     private void createData() {
-        String[] contentList1 = new String[]{"1月", "2月", "3月", "4月"};
-        String[] contentList2 = new String[]{"グルメが充実", "絶景・景観が充実", "名所・観光地が充実", "フォトスポットが充実"};
-        String[] contentList3 = new String[]{"都会・街中", "田舎・村里", "森林・林間"};
+        String[] contentList1 = new String[]{"北海道"};
+        String[] contentList2 = new String[]{"青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"};
+        String[] contentList3 = new String[]{"茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県"};
         dataList = new ArrayList<>();
         Data data1 = new Data();
-        data1.setTitle("おすすめの月");
+        data1.setTitle("北海道地方");
         data1.setContent(Arrays.asList(contentList1));
         dataList.add(data1);
         Data data2 = new Data();
-        data2.setTitle("コーステーマ");
+        data2.setTitle("東北地方");
         data2.setContent(Arrays.asList(contentList2));
         dataList.add(data2);
         Data data3 = new Data();
-        data3.setTitle("コースエリア");
+        data3.setTitle("関東地方");
         data3.setContent(Arrays.asList(contentList3));
         dataList.add(data3);
 
