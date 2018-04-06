@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,15 +22,32 @@ public class PrefectureFragment extends Fragment {
 
     private RecyclerView rcv_list;
     private List<Data> dataList;
+    private Button btn_choose;
+    private OnFragmentInteractionListener listener;
+
+    public static PrefectureFragment newInstance(OnFragmentInteractionListener listener) {
+        PrefectureFragment fragment = new PrefectureFragment();
+        fragment.listener = listener;
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prefecture, container, false);
 
+        btn_choose = view.findViewById(R.id.btn_choose);
         rcv_list = view.findViewById(R.id.rcv_list);
+        rcv_list.setNestedScrollingEnabled(false);
         createData();
-
+        btn_choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onFragmentInteraction("1234");
+                }
+            }
+        });
         return view;
     }
 
@@ -54,6 +72,10 @@ public class PrefectureFragment extends Fragment {
         rcv_list.setLayoutManager(new LinearLayoutManager(getContext()));
         rcv_list.setAdapter(new ListAdapter(getContext(), dataList));
 
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(String content);
     }
 
 }

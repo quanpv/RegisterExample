@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class RegisterFragment extends Fragment implements View.OnClickListener {
+public class RegisterFragment extends Fragment implements View.OnClickListener, PrefectureFragment.OnFragmentInteractionListener {
 
     private EditText edt_email;
     private EditText edt_password;
@@ -19,6 +20,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private ImageView imv_mark_woman;
     private RelativeLayout rlt_woman;
     private RelativeLayout rlt_man;
+    TextView tv_prefecture;
+    String prefecture = "北海道";
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -48,6 +51,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         imv_mark_woman = view.findViewById(R.id.imv_mark_woman);
         rlt_man = view.findViewById(R.id.rlt_man);
         rlt_woman = view.findViewById(R.id.rlt_woman);
+        tv_prefecture = view.findViewById(R.id.tv_prefecture);
 
         edt_email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -74,6 +78,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         rlt_prefecture.setOnClickListener(this);
         rlt_man.setOnClickListener(this);
         rlt_woman.setOnClickListener(this);
+
+        tv_prefecture.setText(prefecture);
 
         return view;
     }
@@ -105,7 +111,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlt_prefecture:
-                ((MainActivity) getActivity()).openPage(new PrefectureFragment());
+                ((MainActivity) getActivity()).openPage(PrefectureFragment.newInstance(this));
                 break;
             case R.id.rlt_man:
                 chooseGender(true);
@@ -115,4 +121,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    public void onFragmentInteraction(String content) {
+        prefecture = content;
+        tv_prefecture.setText(content);
+    }
+
 }
